@@ -14,9 +14,9 @@ def filter_event(name=None, evt_class=None, **kwargs):
 def log_event(name, evt_class='E', **kwargs):
     (frame, filename, line,
      function, lines, index) = inspect.getouterframes(inspect.currentframe())[1]
-    Event(name=name,
+    Event(name=name[:50],
           evt_class=evt_class,
-          filename=filename,
-          function=function,
+          filename=filename[:100],
+          function=function[:25],
           line=line,
           data=kwargs).save()
